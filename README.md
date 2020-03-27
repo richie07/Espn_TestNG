@@ -1,7 +1,7 @@
 INSTALL FRAMEWORk
 
 1. git clone https://github-vpn.globant.com/StudioQEAcademyTAE/WebAutomation.git
-2. mvn clean install
+2. mvn clean install -DskipTests
 3. mvn eclipse:eclipse or mvn idea:idea
 
 Create new branch
