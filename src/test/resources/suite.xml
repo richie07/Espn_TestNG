@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="example test suite" verbose="1">
+	<listeners>
+		<listener class-name="com.globant.web.listeners.Listener"></listener>
+	</listeners>
+	<test name="example run">
+		<groups>
+			<run>
+				<include name="group1"></include>
+			</run>
+		</groups>
+		<classes>
+			<class name="com.globant.web.tests.Example">
+				<methods>
+					<exclude name="goodbye"></exclude>
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
