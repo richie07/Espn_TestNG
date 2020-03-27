@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="example test suite" verbose="1">
+	<test name="example run">
+
+		<classes>
+			<class name="com.globant.web.tests.Example"></class>
+		</classes>
+	</test>
+</suite>
