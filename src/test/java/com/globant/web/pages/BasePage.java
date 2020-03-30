@@ -2,7 +2,9 @@ package com.globant.web.pages;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
@@ -48,6 +50,14 @@ public class BasePage {
 		if (driver != null) {
 			driver.quit();
 		}
+	}
+
+	/**
+	 * Wait element to be visible.
+	 * @param element : WebElement
+	 */
+	public void waitElementVisibility(WebElement element) {
+		getWait().until(ExpectedConditions.visibilityOf(element));
 	}
 	
 }
