@@ -56,22 +56,22 @@ public class Example {
     }
 
     @Test(groups = {"group1", "group2"})
-    public void hello () {
+    public void hello() {
         log.info("Hello");
     }
 
     @Test(groups = {"group1"})
-    public void welcome () {
+    public void welcome() {
         log.info("Welcome");
     }
 
     @Test(groups = {"group1"})
-    public void goodbye () {
+    public void goodbye() {
         log.info("Goodbye");
     }
 
     @Test(groups = {"group2"})
-    public void name () {
+    public void name() {
         log.info("Juan");
     }
 }
