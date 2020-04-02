@@ -25,10 +25,18 @@ public class Driver {
 		switch (browser) {
 			case "remoteFirefox":
 				try {
-					driver = new RemoteWebDriver(new URL("http://172.18.0.1:4444/wd/hub"), DesiredCapabilities.firefox());
+					driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities.firefox());
 				} catch (MalformedURLException e) {
 					e.printStackTrace();
 				}
+				break;
+			case "remoteChrome":
+				try {
+					driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities.chrome());
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				}
+				break;
 			case "firefox":
 				driver = new FirefoxDriver();
 				break;
