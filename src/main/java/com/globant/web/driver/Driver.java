@@ -14,9 +14,9 @@ import java.net.URL;
  * @author juan.montes
  */
 public class Driver {
-	
+
 	private WebDriver driver;
-	
+
 	/**
 	 * Constructor.
 	 * @param browser : String
@@ -38,19 +38,20 @@ public class Driver {
 				}
 				break;
 			case "firefox":
+				System.setProperty("webdriver.gecko.driver", "./src/main/resources/geckodriverMac");
 				driver = new FirefoxDriver();
 				break;
 			case "chrome":
-				System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriverMac80");
+				System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriverMac81");
 				driver = new ChromeDriver();
 				break;
 			default:
 				break;
 		}
 	}
-	
+
 	/**
-	 * 	Get the driver.
+	 *     Get the driver.
 	 * @return WebDriver with the driver
 	 */
 	public WebDriver getDriver() {

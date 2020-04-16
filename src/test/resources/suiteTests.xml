@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="example test suite" verbose="1">
-	<parameter name="browser" value="chrome"/>
+	<parameter name="browser" value="firefox"/>
 	<parameter name="url" value="https://www.wikipedia.org/"/>
 	<test name="example run">
 		<classes>
