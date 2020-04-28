@@ -19,7 +19,7 @@ public class BasePage {
 	
 	/**
 	 * Constructor.
-	 * @param pDriver : WebDriver
+	 * @param pDriver WebDriver
 	 */
 	public BasePage (WebDriver pDriver) {
 		PageFactory.initElements(pDriver, this);
@@ -54,7 +54,7 @@ public class BasePage {
 
 	/**
 	 * Wait element to be visible.
-	 * @param element : WebElement
+	 * @param element WebElement
 	 */
 	public void waitElementVisibility(WebElement element) {
 		getWait().until(ExpectedConditions.visibilityOf(element));

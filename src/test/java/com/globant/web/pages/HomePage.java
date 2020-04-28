@@ -4,6 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+/**
+ * Class for interact with the home page.
+ * @author juan.montes
+ */
 public class HomePage extends BasePage {
 
     @FindBy(className = "central-textlogo__image")
@@ -17,7 +21,8 @@ public class HomePage extends BasePage {
 
     /**
      * Constructor.
-     * @param driver : WebDriver
+     * @param driver WebDriver
+     * @param url String
      */
     public HomePage(WebDriver driver, String url) {
         super(driver);
@@ -26,7 +31,6 @@ public class HomePage extends BasePage {
 
     /**
      * Get Text title
-     *
      * @return String text title
      */
     public String getTitle() {
@@ -37,7 +41,6 @@ public class HomePage extends BasePage {
 
     /**
      * Search a word
-     *
      * @param word String search word
      * @return {@link SearchPage}
      */

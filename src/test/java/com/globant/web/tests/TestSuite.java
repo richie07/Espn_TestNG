@@ -8,6 +8,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+/**
+ * Class for the wikipedia test.
+ * @author juan.montes
+ */
 public class TestSuite extends BaseTest {
 
     @AfterMethod

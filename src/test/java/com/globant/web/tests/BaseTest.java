@@ -34,7 +34,7 @@ public class BaseTest {
 	
 	/**
 	 * Get the home page.
-	 * @return HomePage
+	 * @return {@link HomePage}
 	 */
 	public HomePage getHomePage() {
 		return Home;

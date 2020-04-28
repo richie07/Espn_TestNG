@@ -19,7 +19,7 @@ public class Driver {
 
 	/**
 	 * Constructor.
-	 * @param browser : String
+	 * @param browser String
 	 */
 	public Driver (String browser) {
 		switch (browser) {
@@ -51,8 +51,8 @@ public class Driver {
 	}
 
 	/**
-	 *     Get the driver.
-	 * @return WebDriver with the driver
+	 * Get the driver.
+	 * @return {@link WebDriver}
 	 */
 	public WebDriver getDriver() {
 		return this.driver;
