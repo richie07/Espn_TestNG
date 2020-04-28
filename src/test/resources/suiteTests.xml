@@ -1,8 +1,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="example test suite" verbose="1">
+	<listeners>
+		<listener class-name="com.globant.web.listeners.Listener"/>
+	</listeners>
+
 	<parameter name="browser" value="firefox"/>
 	<parameter name="url" value="https://www.wikipedia.org/"/>
+
 	<test name="example run">
 		<classes>
 			<class name="com.globant.web.tests.TestSuite"/>

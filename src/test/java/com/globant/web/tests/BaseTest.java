@@ -23,6 +23,7 @@ public class BaseTest {
 	@Parameters({"browser", "url"})
 	public void beforeTest(String browser, String url) {
 		driver = new Driver(browser);
+		driver.getDriver().manage().window().maximize();
 		Home= new HomePage(driver.getDriver(), url);
 	}
 

@@ -1,4 +1,4 @@
-INSTALL FRAMEWORk
+INSTALL FRAMEWORK
 
 1. git clone https://github.com/juan-montes-globant/WebAutomationAcademy.git
 2. mvn clean install -DskipTests
