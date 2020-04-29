@@ -26,18 +26,18 @@ public class BasePage {
 		wait = new WebDriverWait(pDriver, 20);
 		driver = pDriver;
 	}
-	
+
 	/**
 	 * Get the web driver wait.
-	 * @return WebDriverWait
+	 * @return {@link WebDriverWait}
 	 */
 	public WebDriverWait getWait() {
 		return wait;
 	}
-	
+
 	/**
 	 * Get the  web driver.
-	 * @return WebDriver
+	 * @return {@link WebDriver}
 	 */
 	protected WebDriver getDriver() {
 		return driver;
