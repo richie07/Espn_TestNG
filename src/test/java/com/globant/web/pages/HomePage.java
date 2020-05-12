@@ -4,6 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+import java.util.Optional;
+
 /**
  * Class for interact with the home page.
  * @author juan.montes
@@ -18,6 +21,9 @@ public class HomePage extends BasePage {
 
     @FindBy(className = "pure-button")
     private WebElement searchButton;
+
+    @FindBy(css = ".link-box Strong")
+    private List<WebElement> idioms;
 
     /**
      * Constructor.
@@ -50,5 +56,13 @@ public class HomePage extends BasePage {
         log.info("click");
         searchButton.click();
         return new SearchPage(getDriver());
+    }
+
+    public MainPage selectIdiom(String language) {
+        waitElementsVisibility(idioms);
+        Optional<WebElement> selectIdiom = idioms.stream()
+                .filter(idiom -> idiom.getText().equals(language)).findFirst();
+        selectIdiom.ifPresent(WebElement::click);
+        return new MainPage(getDriver());
     }
 }
