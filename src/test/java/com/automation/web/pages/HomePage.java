@@ -1,4 +1,4 @@
-package com.globant.web.pages;
+package com.automation.web.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

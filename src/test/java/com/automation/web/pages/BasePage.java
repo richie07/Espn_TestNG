@@ -1,4 +1,4 @@
-package com.globant.web.pages;
+package com.automation.web.pages;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;

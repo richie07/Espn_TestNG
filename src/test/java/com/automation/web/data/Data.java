@@ -1,4 +1,4 @@
-package com.globant.web.data;
+package com.automation.web.data;
 
 import org.testng.annotations.DataProvider;
 

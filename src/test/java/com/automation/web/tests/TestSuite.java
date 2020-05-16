@@ -1,9 +1,9 @@
-package com.globant.web.tests;
+package com.automation.web.tests;
 
-import com.globant.web.data.Data;
-import com.globant.web.pages.HomePage;
-import com.globant.web.pages.MainPage;
-import com.globant.web.pages.SearchPage;
+import com.automation.web.data.Data;
+import com.automation.web.pages.HomePage;
+import com.automation.web.pages.MainPage;
+import com.automation.web.pages.SearchPage;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;

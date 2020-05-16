@@ -1,7 +1,7 @@
-package com.globant.web.tests;
+package com.automation.web.tests;
 
-import com.globant.web.driver.Driver;
-import com.globant.web.pages.HomePage;
+import com.automation.web.driver.Driver;
+import com.automation.web.pages.HomePage;
 import org.apache.log4j.Logger;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
