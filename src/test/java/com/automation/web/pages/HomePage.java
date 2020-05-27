@@ -23,7 +23,7 @@ public class HomePage extends BasePage {
     private WebElement searchButton;
 
     @FindBy(css = ".link-box Strong")
-    private List<WebElement> idioms;
+    private List<WebElement> languages;
 
     /**
      * Constructor.
@@ -59,9 +59,9 @@ public class HomePage extends BasePage {
     }
 
     public MainPage selectIdiom(String language) {
-        waitElementsVisibility(idioms);
-        Optional<WebElement> selectIdiom = idioms.stream()
-                .filter(idiom -> idiom.getText().equals(language)).findFirst();
+        waitElementsVisibility(languages);
+        Optional<WebElement> selectIdiom = languages.stream()
+                .filter(languageElement -> languageElement.getText().equals(language)).findFirst();
         selectIdiom.ifPresent(WebElement::click);
         return new MainPage(getDriver());
     }
