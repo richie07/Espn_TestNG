@@ -33,7 +33,7 @@ public class BasePage {
 	 * Get the web driver wait.
 	 * @return {@link WebDriverWait}
 	 */
-	public WebDriverWait getWait() {
+	protected WebDriverWait getWait() {
 		return wait;
 	}
 
@@ -69,5 +69,5 @@ public class BasePage {
 	public void waitElementsVisibility(List<WebElement> elements) {
 		getWait().until(ExpectedConditions.visibilityOfAllElements(elements));
 	}
-	
+
 }

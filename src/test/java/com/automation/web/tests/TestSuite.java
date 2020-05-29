@@ -38,12 +38,12 @@ public class TestSuite extends BaseTest {
     }
 
     @Test(description = "example test select idiom wikipedia", dataProvider = "idioms")
-    public void testCaseIdiom(String language) {
+    public void testCaseLanguage(String language) {
         log.info("Get Home Page");
         HomePage homePage = getHomePage();
         Assert.assertEquals(homePage.getTitle(), "Wikipedia","TITLE IS NO AS EXPECTED");
         log.info("Idiom: " + language);
-        MainPage mainPage = homePage.selectIdiom(language);
+        MainPage mainPage = homePage.selectLanguage(language);
         Assert.assertTrue(mainPage.verifyLanguage(language), "LANGUAGE IS NOT THE EXPECTED");
     }
 }

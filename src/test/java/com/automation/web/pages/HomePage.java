@@ -58,7 +58,7 @@ public class HomePage extends BasePage {
         return new SearchPage(getDriver());
     }
 
-    public MainPage selectIdiom(String language) {
+    public MainPage selectLanguage(String language) {
         waitElementsVisibility(languages);
         Optional<WebElement> selectIdiom = languages.stream()
                 .filter(languageElement -> languageElement.getText().equals(language)).findFirst();
