@@ -4,8 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 /**
  * Class for interact with the home page.
@@ -60,9 +63,9 @@ public class HomePage extends BasePage {
 
     public MainPage selectLanguage(String language) {
         waitElementsVisibility(languages);
-        Optional<WebElement> selectIdiom = languages.stream()
+        Optional<WebElement> select = languages.stream()
                 .filter(languageElement -> languageElement.getText().equals(language)).findFirst();
-        selectIdiom.ifPresent(WebElement::click);
+        select.ifPresent(WebElement::click);
         return new MainPage(getDriver());
     }
 }

@@ -42,7 +42,7 @@ public class TestSuite extends BaseTest {
         log.info("Get Home Page");
         HomePage homePage = getHomePage();
         Assert.assertEquals(homePage.getTitle(), "Wikipedia","TITLE IS NO AS EXPECTED");
-        log.info("Idiom: " + language);
+        log.info("language: " + language);
         MainPage mainPage = homePage.selectLanguage(language);
         Assert.assertTrue(mainPage.verifyLanguage(language), "LANGUAGE IS NOT THE EXPECTED");
     }
