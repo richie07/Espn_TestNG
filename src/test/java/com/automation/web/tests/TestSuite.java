@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
  */
 public class TestSuite extends BaseTest {
 
-    @DataProvider(name = "idioms")
+    @DataProvider(name = "languages")
     public Object[][] inputData() {
         return new Object[][] {{"English"}, {"Español"}, {"Italiano"}};
     }
@@ -37,7 +37,7 @@ public class TestSuite extends BaseTest {
         Assert.assertEquals(searchPage.getTitle(), country, "TITLE IS NO AS EXPECTED");
     }
 
-    @Test(description = "example test select idiom wikipedia", dataProvider = "idioms")
+    @Test(description = "example test select idiom wikipedia", dataProvider = "languages")
     public void testCaseLanguage(String language) {
         log.info("Get Home Page");
         HomePage homePage = getHomePage();
