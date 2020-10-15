@@ -37,7 +37,7 @@ public class TestSuite extends BaseTest {
         Assert.assertEquals(searchPage.getTitle(), country, "TITLE IS NO AS EXPECTED");
     }
 
-    @Test(description = "example test select idiom wikipedia", dataProvider = "languages")
+    @Test(description = "example test select language wikipedia", dataProvider = "languages")
     public void testCaseLanguage(String language) {
         log.info("Get Home Page");
         HomePage homePage = getHomePage();
