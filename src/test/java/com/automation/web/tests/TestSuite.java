@@ -2,8 +2,6 @@ package com.automation.web.tests;
 
 import com.automation.web.data.Data;
 import com.automation.web.pages.HomePage;
-import com.automation.web.pages.MainPage;
-import com.automation.web.pages.SearchPage;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
@@ -33,8 +31,8 @@ public class TestSuite extends BaseTest {
         HomePage homePage = getHomePage();
         Assert.assertEquals(homePage.getTitle(), "Wikipedia","TITLE IS NO AS EXPECTED");
         log.info("Search: " + country);
-        SearchPage searchPage = homePage.search(country);
-        Assert.assertEquals(searchPage.getTitle(), country, "TITLE IS NO AS EXPECTED");
+        SignUpPage signUpPage = homePage.search(country);
+        Assert.assertEquals(signUpPage.getTitle(), country, "TITLE IS NO AS EXPECTED");
     }
 
     @Test(description = "example test select language wikipedia", dataProvider = "languages")

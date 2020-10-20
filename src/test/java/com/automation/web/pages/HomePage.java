@@ -4,11 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
 
 /**
  * Class for interact with the home page.
@@ -16,17 +11,8 @@ import java.util.stream.Stream;
  */
 public class HomePage extends BasePage {
 
-    @FindBy(className = "central-textlogo__image")
-    private WebElement title;
-
-    @FindBy(id = "searchInput")
-    private WebElement searchField;
-
-    @FindBy(className = "pure-button")
-    private WebElement searchButton;
-
-    @FindBy(css = ".link-box Strong")
-    private List<WebElement> languages;
+    @FindBy(id= "global-user-trigger")
+    private WebElement icoLogin;
 
     /**
      * Constructor.
@@ -39,32 +25,21 @@ public class HomePage extends BasePage {
     }
 
     /**
-     * Get Text title
-     * @return String text title
+     * Constructor.
+     * @param driver WebDriver
      */
-    public String getTitle() {
-        log.info("Get Text title");
-        return getElementText(title);
+    public HomePage(WebDriver driver) {
+        super(driver);
     }
 
     /**
-     * Search a word
-     * @param word String search word
-     * @return {@link SearchPage}
+     * Click IconoLogin
+     * @return {@link MenuLogin}
      */
-    public SearchPage search(String word) {
-        log.info("Set value: " + word);
-        sendElementText(searchButton, word);
+    public MenuLogin goMenuLogin() {
         log.info("click");
-        clickElement(searchButton);
-        return new SearchPage(getDriver());
+        clickElement(icoLogin);
+        return new MenuLogin(getDriver());
     }
 
-    public MainPage selectLanguage(String language) {
-        waitElementsVisibility(languages);
-        Optional<WebElement> select = languages.stream()
-                .filter(languageElement -> languageElement.getText().equals(language)).findFirst();
-        select.ifPresent(WebElement::click);
-        return new MainPage(getDriver());
-    }
 }
