@@ -27,7 +27,6 @@ public class SearchPage extends BasePage {
      */
     public String getTitle() {
         log.info("Get Text title");
-        waitElementVisibility(title);
-        return title.getText();
+        return getElementText(title);
     }
 }

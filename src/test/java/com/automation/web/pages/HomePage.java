@@ -44,8 +44,7 @@ public class HomePage extends BasePage {
      */
     public String getTitle() {
         log.info("Get Text title");
-        waitElementVisibility(title);
-        return title.getText();
+        return getElementText(title);
     }
 
     /**
@@ -55,9 +54,9 @@ public class HomePage extends BasePage {
      */
     public SearchPage search(String word) {
         log.info("Set value: " + word);
-        searchField.sendKeys(word);
+        sendElementText(searchButton, word);
         log.info("click");
-        searchButton.click();
+        clickElement(searchButton);
         return new SearchPage(getDriver());
     }
 

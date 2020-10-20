@@ -70,4 +70,24 @@ public class BasePage {
 		getWait().until(ExpectedConditions.visibilityOfAllElements(elements));
 	}
 
+	public String getElementText(WebElement element) {
+		waitElementVisibility(element);
+		return element.getText();
+	}
+
+	public void sendElementText(WebElement element, String text) {
+		waitElementVisibility(element);
+		element.clear();
+		element.sendKeys(text);
+	}
+
+	public void waitElementClickable(WebElement element) {
+		getWait().until(ExpectedConditions.elementToBeClickable(element));
+	}
+
+	public void clickElement(WebElement element){
+		waitElementClickable(element);
+		element.click();
+	}
+
 }
