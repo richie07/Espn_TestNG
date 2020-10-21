@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class MenuLogin extends BasePage{
+public class MenuLogin extends BasePage{ //  esto hace parte de la home page
 
     @FindBy(css= "div.global-user:first-of-type a[data-affiliatename='espn']")
     private WebElement btnLogin;
