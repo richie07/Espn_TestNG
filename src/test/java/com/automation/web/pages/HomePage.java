@@ -37,7 +37,7 @@ public class HomePage extends BasePage {
      * @return {@link MenuLogin}
      */
     public MenuLogin goMenuLogin() {
-        log.info("click");
+        log.info("Click icon Menu");
         clickElement(icoLogin);
         return new MenuLogin(getDriver());
     }

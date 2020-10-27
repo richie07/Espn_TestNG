@@ -8,8 +8,34 @@ import org.testng.annotations.DataProvider;
  */
 public class Data {
 
-    @DataProvider(name = "countries")
-    public Object[][] inputData() {
-        return new Object[][] {{"Colombia"}, {"Brazil"}, {"Peru"}};
+//    @DataProvider(name = "dataLogin")
+//    public Object[][] inputData() {
+//        User user = new User();
+//        return new Object[][] {
+//                {user.getName(),user.getLastName(),user.getEmail(),user.getPassword()}
+//        };
+//    }
+
+    @DataProvider(name = "dataLogin")
+    public Object[][] inputDataLogout() {
+        User user = new User();
+        return new Object[][] {
+                {user.getName(),user.getLastName(),user.getEmail(),user.getPassword()}
+        };
     }
+//
+//    @DataProvider(name = "dataDisable")
+//    public Object[][] inputDataDisable() {
+//        User user = new User();
+//        return new Object[][] {
+//                {user.getName(),user.getLastName(),user.getEmail(),user.getPassword()}
+//        };
+//    }
+
+    private String getRandomNumber(){
+        String number = String.valueOf(Math.floor(Math.random() * 100000+1 ));
+        return number;
+    }
+
+
 }

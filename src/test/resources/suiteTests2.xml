@@ -10,7 +10,7 @@
 
 	<test name="example run">
 		<classes>
-			<class name="com.automation.web.tests.TestLogIn"/>
+			<class name="com.automation.web.tests.TestDisableAccount"/>
 		</classes>
 
 	</test>

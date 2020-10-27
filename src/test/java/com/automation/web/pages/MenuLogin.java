@@ -4,18 +4,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-
 public class MenuLogin extends BasePage{ //  esto hace parte de la home page
 
     @FindBy(css= "div.global-user:first-of-type a[data-affiliatename='espn']")
     private WebElement btnLogin;
 
-    @FindBy(css= "ul.account-management a[onclick*='espn.memberservices.logout()']")
-    private List<WebElement> btnLogOuts;
+    @FindBy(css= "#global-header  ul.account-management a[onclick*='logout()']")
+    private WebElement btnLogOut;
 
-    @FindBy(css = "div.global-user a[tref$='modifyAccount']")
-    private List<WebElement> btnProfiles;
+    @FindBy(css = "#global-header a[tref$='/members/v3_1/modifyAccount']")
+    private WebElement btnEspProfile;
+
+    @FindBy(css = "#global-header ul.account-management > li.display-user > span")
+    private  WebElement lblNameUser;
+
+    @FindBy(css = "#global-header  ul.account-management > li.display-user")
+    private WebElement lblWelcome;
 
     /**
      * Constructor.
@@ -30,31 +34,55 @@ public class MenuLogin extends BasePage{ //  esto hace parte de la home page
      * Click IconoLogin
      * @return {@link MenuLogin}
      */
-    public MenuLogin goMenuLogin() {
+    public LoginPage goLogin() {
         log.info("click");
         clickElement(btnLogin);
-        return new MenuLogin(getDriver());
+        return new LoginPage(getDriver());
     }
 
     /**
      * Log Out EspnPage
+     * @return {@link HomePage}
      */
-    public void logOutUser(){
-        log.info("Click");
-        WebElement btnLogOut = btnLogOuts.get(0);
+    public HomePage logOutUser(){
+        log.info("Click LogOut");
         clickElement(btnLogOut);
+        getDriver().navigate().refresh();
+        return new HomePage((getDriver()));
     }
 
     /**
      * Enter Account User EspnPage
-     * @return {@link UpdateAccountPage}
+     * @return {@link LoginPage}
      */
-    public UpdateAccountPage clickOptionDelete() {
-        log.info("click");
-        WebElement btnProfile = btnProfiles.get(0);
-        clickElement(btnProfile);
-        return new UpdateAccountPage(getDriver());
+    public LoginPage clickBtnEspProfile() {
+        log.info("click EspnProfile");
+        clickElement(btnEspProfile);
+        return new LoginPage(getDriver());
     }
 
+    /**
+     * Get text Name User
+     * @return String
+     */
+    public String getTextNameUser(){
+        return getElementText(lblNameUser);
+    }
+
+    /**
+     *Return if textNameUser is present
+     * @return boolean
+     */
+    public boolean isPresentTextNameUser(){
+        return isWebElementPresent(lblNameUser);
+    }
+
+    /**
+     * Action to get text welcome
+     * @return
+     */
+    public String getTextWelcome(){
+        return getElementText(lblWelcome);
+    }
 
 }

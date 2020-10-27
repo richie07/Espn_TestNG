@@ -1,6 +1,7 @@
 package com.automation.web.pages;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -70,24 +71,80 @@ public class BasePage {
 		getWait().until(ExpectedConditions.visibilityOfAllElements(elements));
 	}
 
+	/**
+	 * Get element text
+	 * @param element WebElement
+	 * @return String
+	 */
 	public String getElementText(WebElement element) {
 		waitElementVisibility(element);
 		return element.getText();
 	}
 
+	/**
+	 * Write and send text
+	 * @param element WebElement
+	 * @param text String
+	 */
 	public void sendElementText(WebElement element, String text) {
 		waitElementVisibility(element);
 		element.clear();
 		element.sendKeys(text);
 	}
 
+	/**
+	 * Wait element to be clickable.
+	 * @param element WebElement
+	 */
 	public void waitElementClickable(WebElement element) {
 		getWait().until(ExpectedConditions.elementToBeClickable(element));
 	}
 
+	/**
+	 * Click WebElement
+	 * @param element WebElement
+	 */
 	public void clickElement(WebElement element){
 		waitElementClickable(element);
 		element.click();
+	}
+
+	/**
+	 * Wait Frame to be available and switch.
+	 * @param frame WebElement
+	 */
+	public void waitFrameAvailable(WebElement frame) {
+		getWait().until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frame));
+	}
+
+	/**
+	 * Wait element is not visible.
+	 * @param element WebElement
+	 */
+	public void waitElementInvisible(WebElement element) {
+		getWait().until(ExpectedConditions.invisibilityOf(element));
+	}
+
+	/**
+	 * Back to the original Context
+	 */
+	public void switchToOriginalContext() {
+		getDriver().switchTo().parentFrame();
+	}
+
+	/**
+	 * Expected the webelement is Displayed
+	 * @param element WebElement
+	 * @return boolean
+	 */
+	public boolean isWebElementPresent(WebElement element) {
+		try{
+			element.isDisplayed();
+			return true;
+		}
+		catch(NoSuchElementException e){
+			return false;
+		}
 	}
 
 }
