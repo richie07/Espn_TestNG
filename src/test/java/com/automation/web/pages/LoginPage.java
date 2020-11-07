@@ -1,10 +1,16 @@
 package com.automation.web.pages;
 
+import com.automation.web.data.User;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 public class LoginPage extends BasePage{
 
@@ -53,6 +59,9 @@ public class LoginPage extends BasePage{
     @FindBy(css = "#did-ui-view h2[did-translate$='profile_disabled.HEADER'")
     private WebElement lblDisableAccount;
 
+    @FindBy(className = "loading-indicator")
+    private WebElement loading;
+
     /**
      * Constructor.
      *
@@ -83,18 +92,15 @@ public class LoginPage extends BasePage{
 
     /**
      * Create New Account EspnPage
-     * @param name String
-     * @param lastname String
-     * @param email String
-     * @param password String
+     * @param user User
      * @return {@link HomePage}
      */
-    public HomePage createAccount(String name,String lastname,String email,String password){
-        log.info("Create account : "+name+" "+lastname+" "+email+ " "+password);
-        sendElementText(txtName,name);
-        sendElementText(txtLastName,lastname);
-        sendElementText(txtEmail,email);
-        sendElementText(txtPassword,password);
+    public HomePage createAccount(User user){
+        log.info("Create account : "+user.getName()+" "+user.getLastName()+" "+user.getEmail()+ " "+user.getPassword());
+        sendElementText(txtName,user.getName());
+        sendElementText(txtLastName,user.getLastName());
+        sendElementText(txtEmail,user.getEmail());
+        sendElementText(txtPassword,user.getPassword());
         log.info("Click SignUp Account");
         clickElement(btnSignUpAccount);
         waitElementInvisible(frmVistaAccount);
@@ -103,12 +109,11 @@ public class LoginPage extends BasePage{
 
     /**
      * Do log in Page Espn
-     * @param email String
-     * @param password String
+     * @param user User
      * @return {@link HomePage}
      */
-    public HomePage doLogInToPageHome(String email, String password){
-        doLogInPage(email,password);
+    public HomePage doLogInToPageHome(User user){
+        doLogInPage(user.getEmail(), user.getPassword());
         waitElementInvisible(frmVistaAccount);
         return returnPageHome();
 
@@ -120,11 +125,12 @@ public class LoginPage extends BasePage{
     public void doDeleteAccount(){
         waitFrameAvailable(ifrLogin);
         waitElementVisibility(LblTitleUpdateAccount);
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        waitElementInvisible(loading);
+
+        scrollDownToElement(btnDeleteAccount);
+
+        waitElementInvisible(loading);
         clickElement(btnDeleteAccount);
         clickElement(btnDeleteThisAccount);
     }

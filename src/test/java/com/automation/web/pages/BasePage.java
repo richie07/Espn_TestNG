@@ -1,14 +1,15 @@
 package com.automation.web.pages;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Parent of the other classes of pages.
@@ -144,6 +145,30 @@ public class BasePage {
 		}
 		catch(NoSuchElementException e){
 			return false;
+		}
+	}
+
+
+	protected void scrollDownToElement(WebElement element) {
+		JavascriptExecutor js = (JavascriptExecutor) getDriver();
+		js.executeScript("arguments[0].scrollIntoView();", element);
+		waitElementVisibility(element);
+	}
+
+	protected void waitElementVisibilityFWait(WebElement element, int timeOut) {
+		Wait<WebDriver> fWait = null;
+		try {
+			fWait = new FluentWait<WebDriver>((WebDriver) getDriver())
+					.withTimeout(timeOut, TimeUnit.SECONDS)
+					.pollingEvery(1,TimeUnit.SECONDS)
+					.ignoring(StaleElementReferenceException.class)
+					.ignoring(NoSuchElementException.class)
+					.ignoring(ElementNotVisibleException.class)
+					.ignoring(ElementClickInterceptedException.class);
+
+			fWait.until(ExpectedConditions.visibilityOf(element));
+
+		}catch(Exception e) {
 		}
 	}
 

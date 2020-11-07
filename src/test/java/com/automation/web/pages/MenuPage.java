@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class MenuLogin extends BasePage{ //  esto hace parte de la home page
+public class MenuPage extends BasePage{
 
     @FindBy(css= "div.global-user:first-of-type a[data-affiliatename='espn']")
     private WebElement btnLogin;
@@ -26,13 +26,13 @@ public class MenuLogin extends BasePage{ //  esto hace parte de la home page
      *
      * @param pDriver WebDriver
      */
-    public MenuLogin(WebDriver pDriver) {
+    public MenuPage(WebDriver pDriver) {
         super(pDriver);
     }
 
     /**
      * Click IconoLogin
-     * @return {@link MenuLogin}
+     * @return {@link MenuPage}
      */
     public LoginPage goLogin() {
         log.info("click");

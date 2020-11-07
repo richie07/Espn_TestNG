@@ -4,7 +4,7 @@ import com.automation.web.data.Data;
 import com.automation.web.data.User;
 import com.automation.web.pages.HomePage;
 import com.automation.web.pages.LoginPage;
-import com.automation.web.pages.MenuLogin;
+import com.automation.web.pages.MenuPage;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -15,19 +15,21 @@ public class TestLogIn extends BaseTest{
     public void launchHomePage(String url) {
         driver.getDriver().get(url);
         HomePage homePage = getHomePage();
-        MenuLogin menu =homePage.goMenuLogin();
+        MenuPage menu =homePage.goMenuLogin();
         menu.logOutUser();
+       // driver.getDriver().close();
 
     }
 
     @Parameters({"url"})
     @BeforeMethod(alwaysRun = true)
     public void createAccountAndLogOut(Object[] data,String url){
+        User user = (User)data[0];
         HomePage homePage = getHomePage();
-        MenuLogin menu =homePage.goMenuLogin();
+        MenuPage menu =homePage.goMenuLogin();
         LoginPage login = menu.goLogin();
         login.goSignUp();
-        homePage = login.createAccount((String)data[0],(String)data[1],(String)data[2],(String)data[3]);
+        homePage = login.createAccount(user);
         menu =homePage.goMenuLogin();
         menu.logOutUser();
         driver.getDriver().get(url);
@@ -35,15 +37,15 @@ public class TestLogIn extends BaseTest{
     }
 
     @Test(description = "Verify login in EspnPage",dataProviderClass = Data.class, dataProvider = "dataLogin")
-    public void testCaseLogin(String name,String lastname,String email,String password) {
+    public void testCaseLogin(User user) {
         log.info("Stated test Case Login");
         HomePage homePage = getHomePage();
-        MenuLogin menu =homePage.goMenuLogin();
+        MenuPage menu =homePage.goMenuLogin();
         Assert.assertEquals(menu.getTextWelcome(),"Welcome!","NAME WELCOME IS NOT PRESENT");
         LoginPage loginPage =  menu.goLogin();
-        homePage = loginPage.doLogInToPageHome(email, password);
+        homePage = loginPage.doLogInToPageHome(user);
         homePage.goMenuLogin();
-        Assert.assertTrue(menu.getTextNameUser().contains(name),name +" IS NOT PRESENT");
+        Assert.assertTrue(menu.getTextNameUser().contains(user.getName()),user.getName() +" IS NOT PRESENT");
     }
 
 

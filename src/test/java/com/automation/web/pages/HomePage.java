@@ -34,12 +34,12 @@ public class HomePage extends BasePage {
 
     /**
      * Click IconoLogin
-     * @return {@link MenuLogin}
+     * @return {@link MenuPage}
      */
-    public MenuLogin goMenuLogin() {
+    public MenuPage goMenuLogin() {
         log.info("Click icon Menu");
         clickElement(icoLogin);
-        return new MenuLogin(getDriver());
+        return new MenuPage(getDriver());
     }
 
 }

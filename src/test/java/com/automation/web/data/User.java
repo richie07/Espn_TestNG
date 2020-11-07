@@ -1,10 +1,17 @@
 package com.automation.web.data;
 
 public class User {
-    private String name = "Francisco";
-    private String lastName = "Pinedo";
-    private String email = "test@mail.cm";
-    private String password = "Lima2019";
+    private String name ;
+    private String lastName ;
+    private String email ;
+    private String password ;
+
+    public User() {
+        this.name = "Francisco";
+        this.lastName = "Pinedo";
+        this.email = getRandomNumber()+"test@mail.cm";
+        this.password = "Lima2019";
+    }
 
     public String getName() {
         return name;
@@ -15,7 +22,7 @@ public class User {
     }
 
     public String getEmail() {
-        return getRandomNumber()+email;
+        return email;
     }
 
     public String getPassword() {

@@ -8,10 +8,20 @@
 	<parameter name="browser" value="firefox"/>
 	<parameter name="url" value="https://www.espn.com/?src=com&amp;_adblock=true"/>
 
-	<test name="example run">
+<!--	<test name="TestLogIn">-->
+<!--		<classes>-->
+<!--			<class name="com.automation.web.tests.TestLogOut"/>-->
+<!--		</classes>-->
+<!--	</test>-->
+<!--	<test name="TestLogOut">-->
+<!--		<classes>-->
+<!--			<class name="com.automation.web.tests.TestLogOut"/>-->
+<!--		</classes>-->
+<!--	</test>-->
+	<test name="TestDisableAccount">
 		<classes>
-			<class name="com.automation.web.tests.TestLogIn"/>
+			<class name="com.automation.web.tests.TestDisableAccount"/>
 		</classes>
-
 	</test>
+
 </suite>
