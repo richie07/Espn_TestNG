@@ -33,7 +33,7 @@ public class HomePage extends BasePage {
     }
 
     /**
-     * Click IconoLogin
+     * Click IconLogin
      * @return {@link MenuPage}
      */
     public MenuPage goMenuLogin() {

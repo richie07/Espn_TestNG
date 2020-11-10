@@ -172,4 +172,15 @@ public class BasePage {
 		}
 	}
 
+	/**
+	 * Action to return PageHome
+	 * @return {@link HomePage}
+	 */
+	public HomePage returnPageHome(){
+		log.info("Go Home");
+		switchToOriginalContext();
+		//getDriver().navigate().refresh();
+		return new HomePage(getDriver(),getDriver().getCurrentUrl());
+	}
+
 }

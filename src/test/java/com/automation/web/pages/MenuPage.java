@@ -21,6 +21,9 @@ public class MenuPage extends BasePage{
     @FindBy(css = "#global-header  ul.account-management > li.display-user")
     private WebElement lblWelcome;
 
+    @FindBy(id = "disneyid-iframe")
+    private WebElement ifrLogin;
+
     /**
      * Constructor.
      *
@@ -31,13 +34,14 @@ public class MenuPage extends BasePage{
     }
 
     /**
-     * Click IconoLogin
-     * @return {@link MenuPage}
+     * Go LoginIframe
+     * @return {@link LoginIframe}
      */
-    public LoginPage goLogin() {
-        log.info("click");
+    public LoginIframe goLoginIframe() {
+        log.info("Click menu login");
         clickElement(btnLogin);
-        return new LoginPage(getDriver());
+        waitFrameAvailable(ifrLogin);
+        return new LoginIframe(getDriver());
     }
 
     /**
@@ -45,20 +49,21 @@ public class MenuPage extends BasePage{
      * @return {@link HomePage}
      */
     public HomePage logOutUser(){
-        log.info("Click LogOut");
+        log.info("Click menu logOut");
         clickElement(btnLogOut);
         getDriver().navigate().refresh();
         return new HomePage((getDriver()));
     }
 
     /**
-     * Enter Account User EspnPage
-     * @return {@link LoginPage}
+     * Go Account Profile
+     * @return {@link ProfileIframe}
      */
-    public LoginPage clickBtnEspProfile() {
-        log.info("click EspnProfile");
+    public ProfileIframe goProfileIframe() {
+        log.info("Click menu ProfileIframe");
         clickElement(btnEspProfile);
-        return new LoginPage(getDriver());
+        waitFrameAvailable(ifrLogin);
+        return new ProfileIframe(getDriver());
     }
 
     /**

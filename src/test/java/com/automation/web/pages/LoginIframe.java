@@ -2,17 +2,9 @@ package com.automation.web.pages;
 
 import com.automation.web.data.User;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-
-public class LoginPage extends BasePage{
+public class LoginIframe extends BasePage{
 
     @FindBy(css= "a[did-translate='login.label.CREATE_ACCOUNT']")
     private WebElement btnSignUp;
@@ -35,39 +27,21 @@ public class LoginPage extends BasePage{
     @FindBy(css = "div.btn-group button[type='submit']")
     private WebElement btnSignUpAccount;
 
-    @FindBy(id = "disneyid-iframe")
-    private WebElement ifrLogin;
-
     @FindBy(css = "h2")
     private WebElement lblCreateAccount;
 
     @FindBy(id = "did-ui-view")
     private WebElement frmVistaAccount;
 
-    @FindBy(css = "section.section-divider:nth-child(1) > h3:nth-child(1)")
-    private WebElement LblTitleUpdateAccount;
-
-    @FindBy(id = "cancel-account")
-    private WebElement btnDeleteAccount;
-
-    @FindBy(css = "#did-ui-view button[ng-click='vm.confirm()']")
-    private WebElement btnDeleteThisAccount;
-
-    @FindBy(css = "h2[did-translate$='deactivate.successful.messages.header'")
-    private WebElement lblMessageDeleteAccount;
-
     @FindBy(css = "#did-ui-view h2[did-translate$='profile_disabled.HEADER'")
     private WebElement lblDisableAccount;
-
-    @FindBy(className = "loading-indicator")
-    private WebElement loading;
 
     /**
      * Constructor.
      *
      * @param pDriver WebDriver
      */
-    public LoginPage(WebDriver pDriver) {
+    public LoginIframe(WebDriver pDriver) {
         super(pDriver);
     }
 
@@ -75,7 +49,6 @@ public class LoginPage extends BasePage{
      * Click Sign Up for create AccountPage
      */
     public void goSignUp() {
-        waitFrameAvailable(ifrLogin);
         log.info("Click button Sign up");
         clickElement(btnSignUp);
         log.info("Account Login Page");
@@ -95,12 +68,12 @@ public class LoginPage extends BasePage{
      * @param user User
      * @return {@link HomePage}
      */
-    public HomePage createAccount(User user){
+    public HomePage createAccountAndReturnHome(User user){
         log.info("Create account : "+user.getName()+" "+user.getLastName()+" "+user.getEmail()+ " "+user.getPassword());
-        sendElementText(txtName,user.getName());
-        sendElementText(txtLastName,user.getLastName());
+        sendElementText(txtName, user.getName());
+        sendElementText(txtLastName, user.getLastName());
         sendElementText(txtEmail,user.getEmail());
-        sendElementText(txtPassword,user.getPassword());
+        sendElementText(txtPassword, user.getPassword());
         log.info("Click SignUp Account");
         clickElement(btnSignUpAccount);
         waitElementInvisible(frmVistaAccount);
@@ -113,46 +86,13 @@ public class LoginPage extends BasePage{
      * @return {@link HomePage}
      */
     public HomePage doLogInToPageHome(User user){
+
         doLogInPage(user.getEmail(), user.getPassword());
         waitElementInvisible(frmVistaAccount);
         return returnPageHome();
 
     }
 
-    /**
-     * Do delete Account EspnPage
-     */
-    public void doDeleteAccount(){
-        waitFrameAvailable(ifrLogin);
-        waitElementVisibility(LblTitleUpdateAccount);
-
-        waitElementInvisible(loading);
-
-        scrollDownToElement(btnDeleteAccount);
-
-        waitElementInvisible(loading);
-        clickElement(btnDeleteAccount);
-        clickElement(btnDeleteThisAccount);
-    }
-
-    /**
-     * Get text title Delete Account
-     * @return String
-     */
-    public String getTextDeleteAccount(){
-        return getElementText(lblMessageDeleteAccount);
-    }
-
-    /**
-     * Action to return PageHome
-     * @return {@link HomePage}
-     */
-    public HomePage returnPageHome(){
-        log.info("Go Home");
-        switchToOriginalContext();
-        getDriver().navigate().refresh();
-        return new HomePage(getDriver());
-    }
 
     /**
      * Action to do Login Page
@@ -161,7 +101,6 @@ public class LoginPage extends BasePage{
      */
     public void doLogInPage(String email, String password) {
         log.info("Login with " + email + " and " + password);
-        waitFrameAvailable(ifrLogin);
         sendElementText(txtEmail, email);
         sendElementText(txtPassword, password);
         log.info("Click SignUP");
@@ -175,6 +114,7 @@ public class LoginPage extends BasePage{
     public String getTextDisableAccount(){
         return getElementText(lblDisableAccount);
     }
+
 
 
 }
